@@ -20,6 +20,16 @@ public class BootConfig implements WebApplicationInitializer {
         root.scan("be.afelio.software_academy.spring_mvc.example.dvdrental.config");
         sc.addListener(new ContextLoaderListener(root));
  
+        /*
+         <servlet>
+         	<servlet-name>dispatch</servlet-name>
+         	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+         </servlet>
+         <servlet-mapping>
+         	<servlet-name>dispatch</servlet-name>
+         	<url-pattern>/*</url-pattern>
+         </servlet-mapping>
+         */
         ServletRegistration.Dynamic appServlet = 
         		sc.addServlet("dispatch", new DispatcherServlet(new GenericWebApplicationContext()));
         appServlet.setLoadOnStartup(1);

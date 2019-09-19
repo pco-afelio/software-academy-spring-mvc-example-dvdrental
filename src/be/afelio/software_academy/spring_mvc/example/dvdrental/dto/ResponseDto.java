@@ -4,6 +4,7 @@ public class ResponseDto {
 
 	private String status;
 	private String message;
+	private Object payload;
 	
 	public ResponseDto() {}
 	
@@ -29,4 +30,11 @@ public class ResponseDto {
 		this.status = status;
 	}
 
+	public Object getPayload() {
+		return payload;
+	}
+
+	public void setPayload(Object payload) {
+		this.payload = payload;
+	}
 }

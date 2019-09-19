@@ -14,6 +14,10 @@ public class StoreEntity {
 	@JoinColumn(name="address_id")
 	private AddressEntity address;
 	
+	public Integer getId() {
+		return id;
+	}
+	
 	public AddressEntity getAddress() {
 		return address;
 	}
