@@ -103,7 +103,19 @@ public class CustomerController {
 	public ResponseEntity<ResponseDto> deleteCustomer(
 			@PathVariable("firstname") String firstname, 
 			@PathVariable("name") String lastname) {
-		return null;
+		System.out.println("CustomerController.deleteCustomer() => " + firstname + ", " + lastname);
+		ResponseDto dto = null;
+		
+		try {
+			repository.deleteCustomer(firstname, lastname);
+			dto = new ResponseDto(ResponseDtoStatus.SUCCESS, "customer deleted");
+		} catch(CustomerNotFoundException e) {
+			dto = new ResponseDto(ResponseDtoStatus.FAILURE, "customer not found");
+		} catch(Exception e) {
+			dto = new ResponseDto(ResponseDtoStatus.FAILURE, "unexpected exception");
+		}
+		
+		return ResponseEntity.ok(dto);
 	}
 	
 }

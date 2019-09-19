@@ -99,6 +99,14 @@ public class ApplicationRepository {
 		customerRepository.save(customer);
 	}
 	
+	public void deleteCustomer(String firstname, String lastname) {
+		CustomerEntity customer = customerRepository.findOneByFirstnameIgnoreCaseAndNameIgnoreCase(firstname, lastname);
+		if (customer == null) {
+			throw new CustomerNotFoundException();
+		}
+		customerRepository.delete(customer);
+	}
+	
 	private CustomerDto createCustomerDto(CustomerEntity entity) {
 		return new CustomerDto(
 			entity.getFirstname(), 
